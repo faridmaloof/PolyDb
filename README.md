@@ -1,23 +1,45 @@
 # DataBridge
 
-![DataBridge Logo Placeholder](https://via.placeholder.com/150?text=DataBridge+Logo)
+<p align="center">
+  <a href="https://dotnet.microsoft.com/">
+    <img src="https://img.shields.io/badge/.NET-9.0-purple?logo=dotnet" alt=".NET 9.0"/>
+  </a>
+  <a href="https://learn.microsoft.com/sql/">
+    <img src="https://img.shields.io/badge/SQL%20Server-Supported-red?logo=microsoftsqlserver" alt="SQL Server"/>
+  </a>
+  <a href="https://www.mysql.com/">
+    <img src="https://img.shields.io/badge/MySQL-Supported-blue?logo=mysql" alt="MySQL"/>
+  </a>
+  <a href="https://www.postgresql.org/">
+    <img src="https://img.shields.io/badge/PostgreSQL-Supported-blue?logo=postgresql" alt="PostgreSQL"/>
+  </a>
+  <a href="https://www.oracle.com/database/">
+    <img src="https://img.shields.io/badge/Oracle-Supported-red?logo=oracle" alt="Oracle"/>
+  </a>
+  <a href="https://www.sqlite.org/">
+    <img src="https://img.shields.io/badge/SQLite-Supported-lightgrey?logo=sqlite" alt="SQLite"/>
+  </a>
+</p>
 
 A robust and flexible .NET library designed to simplify database interactions across various relational database management systems. DataBridge provides a unified interface for common CRUD operations, abstracting away the complexities of vendor-specific ADO.NET implementations.
 
 ## Table of Contents
-- [Features](#features)
-- [Technologies Used](#technologies-used)
-- [Architecture](#architecture)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-  - [Configuration](#configuration)
-- [Usage Examples](#usage-examples)
-  - [Connecting to a Database](#connecting-to-a-database)
-  - [Performing CRUD Operations](#performing-crud-operations)
-- [Extensibility](#extensibility)
-- [Contributing](#contributing)
-- [License](#license)
+- [DataBridge](#databridge)
+  - [Table of Contents](#table-of-contents)
+  - [Features](#features)
+  - [Technologies Used](#technologies-used)
+  - [Architecture](#architecture)
+  - [Getting Started](#getting-started)
+    - [Prerequisites](#prerequisites)
+    - [Installation](#installation)
+    - [Configuration](#configuration)
+  - [Usage Examples](#usage-examples)
+    - [Connecting to a Database](#connecting-to-a-database)
+    - [Performing CRUD Operations](#performing-crud-operations)
+  - [Extensibility](#extensibility)
+    - [Future Enhancements](#future-enhancements)
+  - [Contributing](#contributing)
+  - [License](#license)
 
 ## Features
 - **Multi-Database Support:** Seamlessly connect and interact with SQL Server, MySQL, PostgreSQL, Oracle, and SQLite.
