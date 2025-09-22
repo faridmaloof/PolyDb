@@ -83,6 +83,49 @@ internal abstract class BaseProvider<TConnection, TCommand, TParameter>(string c
         return result;
     }
 
+    /// <inheritdoc/>
+    public async Task<T?> QuerySingleAsync<T>(string query, Dictionary<string, object>? parameters = null)
+    {
+        EnsureNotDisposed();
+
+        await using var connection = CreateConnection(_connectionString);
+        await connection.OpenAsync();
+
+        await using var command = (TCommand)connection.CreateCommand();
+        command.CommandText = query;
+        AddParameters(command, parameters);
+
+        await using var reader = await command.ExecuteReaderAsync();
+
+        if (await reader.ReadAsync())
+        {
+            var isSimpleType = typeof(T).IsPrimitive ||
+                               typeof(T) == typeof(string) ||
+                               typeof(T) == typeof(decimal) ||
+                               typeof(T) == typeof(DateTime) ||
+                               typeof(T) == typeof(Guid) ||
+                               (typeof(T).IsGenericType && typeof(T).GetGenericTypeDefinition() == typeof(Nullable<>) && typeof(T).GetGenericArguments()[0].IsPrimitive);
+
+            if (isSimpleType)
+            {
+                if (reader.FieldCount > 0)
+                {
+                    var value = reader.GetValue(0);
+                    if (value == DBNull.Value)
+                        return default;
+                    else
+                        return (T)Convert.ChangeType(value, typeof(T));
+                }
+                else
+                    return default;
+            }
+            else
+                return MapReader<T>(reader);
+        }
+
+        return default;
+    }
+
     /// <summary>
     /// Maps the current row of the <see cref="IDataReader"/> to an object of type <typeparamref name="T"/>.
     /// </summary>

@@ -41,6 +41,13 @@ public sealed class PolyDb(IDbProvider provider) : IDbProvider
         return _provider.QueryAsync<T>(query, parameters);
     }
 
+    /// <inheritdoc/>
+    public Task<T?> QuerySingleAsync<T>(string query, Dictionary<string, object>? parameters = null)
+    {
+        EnsureNotDisposed();
+        return _provider.QuerySingleAsync<T>(query, parameters);
+    }
+
     /// <summary>
     /// Releases the resources associated with the underlying provider.
     /// </summary>

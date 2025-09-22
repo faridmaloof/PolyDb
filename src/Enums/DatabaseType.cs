@@ -10,5 +10,6 @@ public enum DatabaseType
     MySql,
     MariaDb,
     SqLite,
-    Oracle
+    Oracle,
+    Firebird
 }
